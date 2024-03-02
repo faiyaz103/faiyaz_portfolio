@@ -1,0 +1,75 @@
+﻿@model List<Experience>
+<!-- ----------------------Experience---------------------------- -->
+<section id="experience">
+    <p class="section__text__p1">Explore My</p>
+    <h1 class="title">Experience</h1>
+    @if (User.Identity.IsAuthenticated)
+    {
+        <a asp-controller="Experience" asp-action="Create">Add Experience</a>
+    }
+    <div class="experience-details-container">
+        <div class="about-containers">
+            <div class="details-container">
+                <div class="article-container">
+                    @for(int i=0; i<Model.Count/2; i++)
+                    {
+                        <article>
+                            <img src="./assets/checkmark.png"
+                                 alt="Experience icon"
+                                 class="icon" />
+                            <div>
+                                <h3>@Model[i].Name</h3>
+                                <p>@Model[i].Description</p>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a asp-controller="Experience" asp-action="Edit" asp-route-id="@Model[i].Id">Edit</a>
+                                    <a asp-controller="Experience" asp-action="Delete" asp-route-id="@Model[i].Id">Delete</a>
+                                }
+                            </div>
+                        </article>
+                    }
+                </div>
+            </div>
+
+
+
+
+
+            <div class="details-container">
+                
+                <div class="article-container">
+                    @for (int i = (Model.Count / 2); i < Model.Count; i++)
+                    {
+                        <article>
+                            <img src="./assets/checkmark.png"
+                                 alt="Experience icon"
+                                 class="icon" />
+                            <div>
+                                <h3>@Model[i].Name</h3>
+                                <p>@Model[i].Description</p>
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a asp-controller="Experience" asp-action="Edit" asp-route-id="@Model[i].Id">Edit</a>
+                                    <a asp-controller="Experience" asp-action="Delete" asp-route-id="@Model[i].Id">Delete</a>
+                                }
+                            </div>
+                        </article>
+                    }
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+    <img src="./assets/arrow.png"
+         alt="Arrow icon"
+         class="icon arrow"
+         onclick="location.href='./#projects'" />
+</section>
+<!-- ----------------------------------------------------------------- -->
